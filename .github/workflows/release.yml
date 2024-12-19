@@ -19,7 +19,7 @@ jobs:
           yarn install
           yarn build
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            RELEASE_NAME=$(date +%d%m%y)
+            RELEASE_NAME=$(date +%y%m%d%H)
           else
             RELEASE_NAME=${GITHUB_REF#refs/tags/}
           fi
