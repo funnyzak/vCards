@@ -2,9 +2,8 @@ name: Release
 
 on:
   push:
-    branches: [ "main" ]
-    paths:
-    - "data/**"
+    tags:
+      - '*'
   workflow_dispatch:
 
 jobs:
@@ -19,4 +18,9 @@ jobs:
         run: |
           yarn install
           yarn build
-          gh release create $(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1) public/*
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            RELEASE_NAME=$(date +%d%m%y)
+          else
+            RELEASE_NAME=${GITHUB_REF#refs/tags/}
+          fi
+          gh release create "$RELEASE_NAME" public/*
