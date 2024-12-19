@@ -23,6 +23,6 @@ jobs:
           if [[ "${GITHUB_REF}" =~ ^refs/tags/ ]]; then
               RELEASE_NAME=${GITHUB_REF#refs/tags/}
           else
-              RELEASE_NAME=$(date -v+8H +%y%m%d%H)
+              RELEASE_NAME=$(date +%y%m%d%H%M)
           fi
           gh release create "$RELEASE_NAME" public/*
