@@ -7,10 +7,10 @@ vCards CN
 
 ## 使用指南
 
-### 订阅：CardDAV 服务/ 或参考[教程自建](https://github.com/metowolf/vCards/issues/208)
+### 订阅：CardDAV 服务
 采用订阅方式导入，优势是会自动更新，也更方便区分和管理个人通讯录和黄页，不会混合两种列表。
 
- - 服务器：`vcards.metowolf.com`
+ - 服务器：`vcards.yycc.dev`
  - 用户名：`cn`
  - 密码：`cn` 或任意填写
 
@@ -18,9 +18,22 @@ vCards CN
 1. [iOS](https://support.apple.com/zh-sg/guide/iphone/ipha0d932e96/ios)：「设置」--「通讯录」--「账户」--「添加账户」-- 「其他」--「添加 CardDAV 账户」
 2. [Mac](https://support.apple.com/zh-cn/guide/contacts/adrb7e5aaa2a/mac)：「通讯录」--「设置」--「账户」--「其他通讯录账户」
 
+**自建本服务**
+
+使用 Docker 快速启动本服务，如下为每天 0 点同步一本 Repo 的配置：
+
+```bash
+docker run -d --name vcard-pro \
+    -p 5232:5232 \
+    -e SYNC_CRON="0 0 * * *" \
+    funnyzak/vcards-pro:latest
+```
+启动后，更换上述订阅地址为你的服务器地址即可，然后在设备上添加账户即可。
+
+
 ### 下载导入
 
-1. 到 https://github.com/metowolf/vCards/releases 下载最新的打包文件 `archive.zip`；
+1. 到 https://github.com/funnyzak/vCards/releases 下载最新的打包文件 `archive.zip`；
 2. 解压后，根据不同平台的指南导入 `vcf` 文件至 iCloud 中，推荐单独创建「黄页」分组方便管理和隐藏。
 
 #### macOS
@@ -35,7 +48,7 @@ vCards CN
 
 ## 请求收录
 
- 1. 打开 https://github.com/metowolf/vCards/issues/new/choose 页面，选择「vCard 新增请求」
+ 1. 打开 https://github.com/funnyzak/vCards/issues/new/choose 页面，选择「vCard 新增请求」
  2. 完整填写相关信息
  3. 提交 `issue`，等待处理
 
