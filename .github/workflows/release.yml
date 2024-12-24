@@ -20,7 +20,7 @@ jobs:
         run: |
           yarn install
           yarn build && cp -r public dist
-          yarn radicale && zip -r dist/radicale.zip radicale/*
+          yarn radicale && zip -r dist/radicale.zip radicale/
           if [[ "${GITHUB_REF}" =~ ^refs/tags/ ]]; then
               RELEASE_NAME=${GITHUB_REF#refs/tags/}
           else
