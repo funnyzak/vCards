@@ -19,10 +19,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           yarn install
-          yarn build
+          yarn build && cp -r public dist
+          yarn radicale && zip -r dist/radicale.zip radicale/
           if [[ "${GITHUB_REF}" =~ ^refs/tags/ ]]; then
               RELEASE_NAME=${GITHUB_REF#refs/tags/}
           else
               RELEASE_NAME=$(date +%y%m%d%H%M)
           fi
-          gh release create "$RELEASE_NAME" public/*
+          gh release create "$RELEASE_NAME" dist/*
