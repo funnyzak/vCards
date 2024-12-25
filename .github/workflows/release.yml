@@ -2,8 +2,6 @@ name: Release
 
 on:
   push:
-    tags:
-      - '*'
     paths:
       - 'data/**'
   workflow_dispatch:
