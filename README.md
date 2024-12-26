@@ -23,12 +23,14 @@ vCards CN
 使用 Docker 快速启动本服务，如下为每天 0 点同步一本 Repo 的配置：
 
 ```bash
-docker run -d --name vcard-pro \
+docker run -d --name vcards \
     -p 5232:5232 \
     -e SYNC_CRON="0 0 * * *" \
-    funnyzak/vcards-pro:latest
+    funnyzak/vcards:latest
 ```
 启动后，更换上述订阅地址为你的服务器地址即可，然后在设备上添加账户即可。
+
+> 更多镜像使用方法请参考 [Docker Hub](https://hub.docker.com/r/funnyzak/vcards)
 
 
 ### 下载导入
